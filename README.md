@@ -4,7 +4,7 @@
 
 Welcome to my repository! This contains some of my side projects focused on different domains, including web applications, APIs, and management systems. Each project is designed to explore different technologies and improve my development skills. 🚀
 
-##📂 Projects Overview
+## 📂 Projects Overview
 
 ### 1️⃣ General Store Management System
 
