@@ -4,71 +4,21 @@
 
 Welcome to my repository! This contains some of my side projects focused on different domains, including web applications, APIs, and management systems. Each project is designed to explore different technologies and improve my development skills. 🚀
 
-📂 Projects Overview
+##📂 Projects Overview
 
-1️⃣ Library Book Management
+### 1️⃣ General Store Management System
 
-📖 A simple library management system to handle book records, borrowing, and user management.
-
-Tech Stack: C
-
-Features:
-
-Add, remove, and update book records 📚
-
-Manage student records and book lending 📋
-
-Simple command-line interface 🖥️
-
-📌 Library Book Management Repository
-
-2️⃣ Weather API System
-
-🌤️ A weather application that fetches real-time weather details using an API.
+📖 A simple general store management system to handle items, sales, billing, and user management.
 
 Tech Stack: Python
 
 Features:
 
-Get current weather conditions based on location 🌎
+- Add, remove, and update item records 📚
 
-Displays temperature, humidity, and wind speed 🌡️
+- Manage items, billing, and Sales 📋
 
-Simple CLI-based output 🖥️
-
-📌 Weather API System Repository
-
-3️⃣ Food Cuisine List
-
-🍔 A web-based application showcasing various food cuisines.
-
-Tech Stack: HTML, CSS
-
-Features:
-
-Browse different cuisines 🍽️
-
-View details and popular dishes for each cuisine 🥗
-
-Simple and responsive UI 📱
-
-📌 Food Cuisine List Repository
-
-4️⃣ Eco-Friendly Shopping Site
-
-🌱 An e-commerce site promoting eco-friendly and sustainable products.
-
-Tech Stack: HTML
-
-Features:
-
-Browse and purchase sustainable products 🛍️
-
-Simple HTML-based site 🌎
-
-Interactive and engaging UI 💚
-
-📌 Eco-Friendly Shopping Site Repository
+- Simple command-line interface 🖥️
 
 🔧 Installation & Setup
 
@@ -78,7 +28,7 @@ General Steps:
 
 Clone the repository:
 
-git clone [https://github.com/your-username/your-repository.git](https://github.com/MokshSharma7/TheSideProjects/tree/main)
+git clone [https://github.com/your-username/your-repository.git](https://github.com/SamkitJain1812/Side_Projects)
 
 Navigate to the project folder:
 
@@ -86,16 +36,10 @@ cd project-name
 
 Follow the setup guide in each project's respective README.md file.
 
-🤝 Contributing
-
-Feel free to fork, contribute, or suggest improvements. Let's build together! 🚀
-
 📩 Contact
 
 For any queries or collaboration opportunities, reach out to me at:
 
 📧 Email: samkitjain1812@gmail.com
 
-💼 LinkedIn: Samkit Jain 
-
-Thanks for visiting my projects! ⭐ If you like them, don't forget to star the repositories!
+💼 LinkedIn: Samkitjain1812
