@@ -28,11 +28,11 @@ General Steps:
 
 Clone the repository:
 
-git clone [https://github.com/your-username/your-repository.git](https://github.com/SamkitJain1812/Side_Projects)
+git clone [Side Projects](https://github.com/SamkitJain1812/Side_Projects)
 
 Navigate to the project folder:
 
-cd project-name
+cd Side_Projects
 
 Follow the setup guide in each project's respective README.md file.
 
