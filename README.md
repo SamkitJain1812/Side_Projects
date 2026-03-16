@@ -28,7 +28,7 @@ General Steps:
 
 Clone the repository:
 
-git clone [Side Projects](https://github.com/SamkitJain1812/Side_Projects)
+git clone [https://github.com/SamkitJain1812/Side_Projects](https://github.com/SamkitJain1812/Side_Projects)
 
 Navigate to the project folder:
 
