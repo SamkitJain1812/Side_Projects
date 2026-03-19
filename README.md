@@ -27,12 +27,15 @@ Each project has its own installation steps. Refer to the individual project fol
 General Steps:
 
 Clone the repository:
-
+```bash
 git clone [https://github.com/SamkitJain1812/Side_Projects](https://github.com/SamkitJain1812/Side_Projects)
+```
 
 Navigate to the project folder:
 
+```bash
 cd Side_Projects
+```
 
 Follow the setup guide in each project's respective README.md file.
 
