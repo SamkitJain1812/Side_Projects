@@ -195,4 +195,4 @@ CREATE TABLE purchase (
 
 ## 📄 License
 
-MIT License — free to use, modify, and distribute.
+GNU General Public License — free to use, modify, and distribute.
