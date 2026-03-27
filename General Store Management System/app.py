@@ -10,7 +10,7 @@ CORS(app)
 DB_CONFIG = {
     "host":   "localhost",
     "user":   "root",
-    "passwd": "Samkit@2006",   # <-- put your MySQL password
+    "passwd": "your_dbms_password",   # <-- put your MySQL password
     "database": "Kirana_Store"
 }
 
@@ -60,7 +60,9 @@ def init_db():
     conn.close()
     print("✔ Database initialised.")
 
+# ════════════════════════════════════════
 #  STOCK
+# ════════════════════════════════════════
 
 @app.route('/api/stock', methods=['GET'])
 def get_stock():
@@ -99,7 +101,9 @@ def delete_stock(item_id):
     conn.commit(); conn.close()
     return jsonify({"status": "ok", "message": "Item deleted"})
 
+# ════════════════════════════════════════
 #  SALES
+# ════════════════════════════════════════
 
 @app.route('/api/sales', methods=['GET'])
 def get_sales():
@@ -124,7 +128,9 @@ def add_sale():
     conn.commit(); conn.close()
     return jsonify({"status": "ok", "total": round(total, 2)})
 
+# ════════════════════════════════════════
 #  PURCHASE
+# ════════════════════════════════════════
 
 @app.route('/api/purchase', methods=['GET'])
 def get_purchase():
@@ -145,7 +151,9 @@ def add_purchase():
     conn.commit(); conn.close()
     return jsonify({"status": "ok"})
 
+# ════════════════════════════════════════
 #  DASHBOARD STATS
+# ════════════════════════════════════════
 
 @app.route('/api/stats', methods=['GET'])
 def get_stats():
@@ -161,7 +169,9 @@ def get_stats():
     conn.close()
     return jsonify({"items": items, "bills": bills, "revenue": round(revenue,2), "purchases": purchases})
 
+# ════════════════════════════════════════
 #  SERVE FRONTEND
+# ════════════════════════════════════════
 
 @app.route('/')
 def index():
