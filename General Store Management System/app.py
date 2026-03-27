@@ -10,7 +10,7 @@ CORS(app)
 DB_CONFIG = {
     "host":   "localhost",
     "user":   "root",
-    "passwd": "your_dbms_password",   # <-- put your MySQL password
+    "passwd": "Your dbms password",  #your password
     "database": "Kirana_Store"
 }
 
