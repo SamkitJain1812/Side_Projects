@@ -6,13 +6,7 @@
 <title>Kirana Ki Dukan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Mukta:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 <style>
-/* ══════════════════════════════════════════
-   DESIGN TOKENS — Haryanvi Desi Palette
-   Phulkari embroidery · Mustard fields ·
-   Red brick haveli · Earthen clay pots
-══════════════════════════════════════════ */
 :root {
   --saffron:    #E8520A;
   --deep-saf:   #C44308;
@@ -22,13 +16,11 @@
   --mehendi:    #4E6B3A;
   --dark-green: #3A5229;
   --neel:       #1E3A5F;
-
   --bg:         #F5E6C8;
   --bg2:        #EDD8A8;
   --card:       #FFF8EC;
   --sidebar-bg: #1C0F05;
   --header-bg:  #180C02;
-
   --ink:        #1C0F05;
   --ink2:       #3D2410;
   --muted:      #8C6840;
@@ -36,818 +28,318 @@
   --border-l:   rgba(200,160,80,0.35);
   --sh:         rgba(28,15,5,0.18);
   --sh2:        rgba(28,15,5,0.08);
-
   --ff-head: 'Abril Fatface', serif;
   --ff-body: 'Mukta', sans-serif;
   --ff-mono: 'JetBrains Mono', monospace;
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff-body);background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+.phulkari{height:5px;border-radius:4px;background:repeating-linear-gradient(90deg,var(--saffron) 0px,var(--saffron) 7px,var(--haldi) 7px,var(--haldi) 13px,var(--mehendi) 13px,var(--mehendi) 19px,var(--haldi) 19px,var(--haldi) 25px,var(--chili) 25px,var(--chili) 31px,var(--haldi) 31px,var(--haldi) 37px);}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--bg2);}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
 
-*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+/* HEADER */
+header{background:var(--header-bg);height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;position:sticky;top:0;z-index:200;box-shadow:0 4px 28px rgba(0,0,0,0.5);}
+header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--saffron),var(--haldi),var(--chili),var(--mehendi),var(--haldi),var(--saffron));background-size:400% 100%;animation:gradAnim 5s linear infinite;}
+@keyframes gradAnim{0%{background-position:0% 0%;}100%{background-position:400% 0%;}}
+.logo-wrap{display:flex;align-items:center;gap:0.9rem;}
+.logo-badge{width:42px;height:42px;background:var(--saffron);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;animation:glow 3s ease-in-out infinite alternate;}
+@keyframes glow{from{box-shadow:0 0 0 2px rgba(240,180,41,0.4),0 4px 14px rgba(232,82,10,0.35);}to{box-shadow:0 0 0 2px rgba(240,180,41,0.7),0 6px 24px rgba(232,82,10,0.65);}}
+.logo-texts{display:flex;flex-direction:column;line-height:1.15;}
+.logo-main{font-family:var(--ff-head);font-size:1.42rem;color:#fff;}
+.logo-main span{color:var(--haldi);}
+.logo-tag{font-family:var(--ff-mono);font-size:0.57rem;color:rgba(200,160,80,0.45);letter-spacing:0.18em;text-transform:uppercase;}
+.db-pill{display:flex;align-items:center;gap:0.45rem;background:rgba(255,255,255,0.04);border:1px solid rgba(200,160,80,0.18);border-radius:100px;padding:0.3rem 0.9rem;font-family:var(--ff-mono);font-size:0.63rem;color:rgba(200,160,80,0.55);}
+.db-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:blink 2.2s ease infinite;}
+.db-dot.off{background:#ef4444;box-shadow:0 0 6px #ef4444;animation:none;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-body {
-  font-family: var(--ff-body);
-  background: var(--bg);
-  color: var(--ink);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+/* LAYOUT */
+.shell{display:flex;min-height:calc(100vh - 68px);}
 
-/* Grain texture */
-body::before {
-  content:'';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.5;
-}
+/* SIDEBAR */
+aside{width:220px;flex-shrink:0;background:var(--sidebar-bg);border-right:1px solid rgba(200,160,80,0.1);display:flex;flex-direction:column;padding:1.6rem 0 1rem;position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto;}
+.nav-label{font-family:var(--ff-mono);font-size:0.57rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(200,160,80,0.28);padding:1rem 1.5rem 0.3rem;}
+.nav-btn{display:flex;align-items:center;gap:0.7rem;padding:0.68rem 1.5rem;width:100%;background:none;border:none;border-left:3px solid transparent;color:rgba(255,255,255,0.38);font-family:var(--ff-body);font-size:0.9rem;font-weight:600;cursor:pointer;text-align:left;transition:all 0.18s;}
+.nav-btn .ni{font-size:1rem;width:20px;text-align:center;flex-shrink:0;}
+.nav-btn .nav-en{font-weight:700;display:block;color:inherit;}
+.nav-btn .nav-hi{font-size:0.64rem;color:rgba(200,160,80,0.35);font-family:var(--ff-mono);display:block;margin-top:1px;}
+.nav-btn:hover{color:rgba(255,255,255,0.78);background:rgba(232,82,10,0.07);}
+.nav-btn.active{color:#fff;border-left-color:var(--saffron);background:linear-gradient(90deg,rgba(232,82,10,0.16) 0%,transparent 100%);}
+.nav-btn.active .nav-hi{color:rgba(240,180,41,0.45);}
+.nav-divider{height:1px;background:rgba(200,160,80,0.08);margin:0.5rem 1.5rem;}
 
-/* Phulkari stripe */
-.phulkari {
-  height: 5px;
-  border-radius: 4px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--saffron) 0px,   var(--saffron)  7px,
-    var(--haldi)   7px,   var(--haldi)   13px,
-    var(--mehendi) 13px,  var(--mehendi) 19px,
-    var(--haldi)   19px,  var(--haldi)   25px,
-    var(--chili)   25px,  var(--chili)   31px,
-    var(--haldi)   31px,  var(--haldi)   37px
-  );
-}
+/* MAIN */
+main{flex:1;padding:2.2rem 2.5rem;overflow-y:auto;}
+.page{display:none;}
+.page.active{display:block;animation:pageIn 0.24s ease;}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.pg-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem;}
+.pg-title{font-family:var(--ff-head);font-size:2rem;color:var(--ink);line-height:1.05;}
+.pg-sub{font-size:0.78rem;color:var(--muted);margin-top:0.2rem;font-family:var(--ff-mono);letter-spacing:0.03em;}
+.pg-deco{font-size:1.6rem;opacity:0.2;letter-spacing:-3px;margin-top:4px;}
 
-/* Hindi sub-label style */
-.hindi-sub {
-  font-size: 0.68rem;
-  color: var(--muted);
-  font-family: var(--ff-mono);
-  letter-spacing: 0.02em;
-  display: block;
-  margin-top: 1px;
-}
+/* STAT CARDS */
+.stats-row{display:flex;gap:1.1rem;margin-bottom:1.9rem;flex-wrap:wrap;}
+.stat-card{flex:1;min-width:148px;background:var(--card);border:1.5px solid var(--border-l);border-radius:14px;padding:1.3rem 1.4rem 1.1rem;box-shadow:0 3px 14px var(--sh2),inset 0 1px 0 rgba(255,255,255,0.65);position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;cursor:default;}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--sc-clr,var(--saffron));border-radius:14px 14px 0 0;}
+.stat-card .sc-wm{position:absolute;bottom:-10px;right:8px;font-size:4.5rem;opacity:0.05;line-height:1;pointer-events:none;user-select:none;}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px var(--sh);}
+.sc-label{font-family:var(--ff-mono);font-size:0.62rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem;}
+.sc-val{font-family:var(--ff-head);font-size:2.2rem;color:var(--sc-clr,var(--saffron));line-height:1;}
+.sc-note{font-size:0.74rem;color:var(--muted);margin-top:0.25rem;}
+.sc-note-hi{font-size:0.62rem;color:rgba(140,104,64,0.6);display:block;}
 
-::-webkit-scrollbar { width:5px; }
-::-webkit-scrollbar-track { background: var(--bg2); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius:10px; }
+/* QUICK TILES */
+.quick-row{display:flex;gap:1rem;margin-bottom:1.9rem;flex-wrap:wrap;}
+.quick-tile{flex:1;min-width:130px;background:var(--card);border:1.5px solid var(--border-l);border-radius:14px;padding:1.25rem 1rem;text-align:center;cursor:pointer;transition:all 0.2s;box-shadow:0 2px 10px var(--sh2);position:relative;overflow:hidden;}
+.quick-tile::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--qt-clr,var(--saffron));border-radius:0 0 14px 14px;transform:scaleX(0);transition:transform 0.22s;}
+.quick-tile:hover::after{transform:scaleX(1);}
+.quick-tile:hover{transform:translateY(-4px);box-shadow:0 14px 32px var(--sh);border-color:var(--qt-clr,var(--saffron));}
+.qt-icon{font-size:2rem;margin-bottom:0.4rem;}
+.qt-en{font-weight:800;font-size:0.9rem;color:var(--ink);}
+.qt-hi{font-size:0.67rem;color:var(--muted);margin-top:0.2rem;font-family:var(--ff-mono);}
 
-/* ══════════════════ HEADER ══════════════════ */
-header {
-  background: var(--header-bg);
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  box-shadow: 0 4px 28px rgba(0,0,0,0.5);
-}
-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg,
-    var(--saffron), var(--haldi), var(--chili),
-    var(--mehendi), var(--haldi), var(--saffron));
-  background-size: 400% 100%;
-  animation: gradAnim 5s linear infinite;
-}
-@keyframes gradAnim {
-  0%   { background-position: 0% 0%; }
-  100% { background-position: 400% 0%; }
-}
+/* PANELS */
+.panel{background:var(--card);border:1.5px solid var(--border-l);border-radius:14px;padding:1.5rem 1.75rem;box-shadow:0 2px 12px var(--sh2),inset 0 1px 0 rgba(255,255,255,0.55);margin-bottom:1.4rem;position:relative;overflow:hidden;}
+.panel::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,var(--saffron) 0,var(--saffron) 6px,var(--haldi) 6px,var(--haldi) 12px,var(--mehendi) 12px,var(--mehendi) 18px,var(--haldi) 18px,var(--haldi) 24px);opacity:0.45;}
+.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;padding-bottom:0.9rem;border-bottom:1px dashed var(--border-l);}
+.panel-title{font-family:var(--ff-body);font-size:0.98rem;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:0.4rem;}
+.panel-title .pt-hi{font-size:0.65rem;font-weight:400;color:var(--muted);font-family:var(--ff-mono);margin-left:0.2rem;}
 
-.logo-wrap { display:flex; align-items:center; gap:0.9rem; }
-.logo-badge {
-  width: 42px; height: 42px;
-  background: var(--saffron);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  animation: glow 3s ease-in-out infinite alternate;
-}
-@keyframes glow {
-  from { box-shadow: 0 0 0 2px rgba(240,180,41,0.4), 0 4px 14px rgba(232,82,10,0.35); }
-  to   { box-shadow: 0 0 0 2px rgba(240,180,41,0.7), 0 6px 24px rgba(232,82,10,0.65); }
-}
-.logo-texts { display:flex; flex-direction:column; line-height:1.15; }
-.logo-main {
-  font-family: var(--ff-head);
-  font-size: 1.42rem;
-  color: #fff;
-}
-.logo-main span { color: var(--haldi); }
-.logo-tag {
-  font-family: var(--ff-mono);
-  font-size: 0.57rem;
-  color: rgba(200,160,80,0.45);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
+/* TABS */
+.tabs{display:flex;margin-bottom:1.3rem;border-bottom:2px solid var(--border-l);}
+.tab{background:none;border:none;padding:0.58rem 1.15rem;font-family:var(--ff-body);font-size:0.87rem;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.15s;}
+.tab:hover{color:var(--saffron);}
+.tab.active{color:var(--saffron);border-bottom-color:var(--saffron);}
+.tab-body{display:none;}
+.tab-body.active{display:block;animation:pageIn 0.2s ease;}
 
-.db-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(200,160,80,0.18);
-  border-radius: 100px;
-  padding: 0.3rem 0.9rem;
-  font-family: var(--ff-mono);
-  font-size: 0.63rem;
-  color: rgba(200,160,80,0.55);
-}
-.db-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 6px #22c55e;
-  animation: blink 2.2s ease infinite;
-}
-.db-dot.off { background:#ef4444; box-shadow:0 0 6px #ef4444; animation:none; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+/* FORMS */
+.form-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:0.9rem;}
+.field{display:flex;flex-direction:column;gap:0.28rem;flex:1;min-width:150px;}
+.field label{font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+.field label .lbl-hi{font-size:0.6rem;font-weight:400;text-transform:none;letter-spacing:0;color:rgba(140,104,64,0.55);margin-left:0.3rem;}
+.field input,.field select{background:var(--bg);border:1.5px solid var(--border-l);border-radius:8px;padding:0.58rem 0.9rem;font-family:var(--ff-body);font-size:0.9rem;color:var(--ink);font-weight:500;outline:none;transition:border-color 0.15s,box-shadow 0.15s;}
+.field input:focus,.field select:focus{border-color:var(--saffron);box-shadow:0 0 0 3px rgba(232,82,10,0.1);}
+.field input::placeholder{color:rgba(140,104,64,0.4);}
 
-/* ══════════════════ LAYOUT ══════════════════ */
-.shell { display:flex; min-height:calc(100vh - 68px); }
+/* BUTTONS */
+.btn-row{display:flex;gap:0.65rem;flex-wrap:wrap;margin-top:0.9rem;}
+.btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.56rem 1.3rem;border:none;border-radius:8px;font-family:var(--ff-body);font-size:0.87rem;font-weight:800;cursor:pointer;transition:all 0.15s;letter-spacing:0.02em;}
+.btn-primary{background:var(--saffron);color:#fff;box-shadow:0 4px 14px rgba(232,82,10,0.3);}
+.btn-primary:hover{background:var(--deep-saf);transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,82,10,0.42);}
+.btn-green{background:var(--mehendi);color:#fff;box-shadow:0 3px 10px rgba(78,107,58,0.28);}
+.btn-green:hover{background:var(--dark-green);}
+.btn-red{background:var(--chili);color:#fff;box-shadow:0 3px 10px rgba(184,50,50,0.28);}
+.btn-red:hover{background:#9e2b2b;}
+.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--muted);}
+.btn-outline:hover{border-color:var(--saffron);color:var(--saffron);}
+.btn-sm{padding:0.3rem 0.78rem;font-size:0.77rem;}
 
-/* ══════════════════ SIDEBAR ══════════════════ */
-aside {
-  width: 220px;
-  flex-shrink: 0;
-  background: var(--sidebar-bg);
-  border-right: 1px solid rgba(200,160,80,0.1);
-  display: flex;
-  flex-direction: column;
-  padding: 1.6rem 0 1rem;
-  position: sticky;
-  top: 68px;
-  height: calc(100vh - 68px);
-  overflow-y: auto;
-}
-.nav-label {
-  font-family: var(--ff-mono);
-  font-size: 0.57rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(200,160,80,0.28);
-  padding: 1rem 1.5rem 0.3rem;
-}
-.nav-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.68rem 1.5rem;
-  width: 100%;
-  background: none;
-  border: none;
-  border-left: 3px solid transparent;
-  color: rgba(255,255,255,0.38);
-  font-family: var(--ff-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.18s;
-}
-.nav-btn .ni { font-size:1rem; width:20px; text-align:center; flex-shrink:0; }
-.nav-btn .nav-en  { font-weight:700; display:block; color:inherit; }
-.nav-btn .nav-hi  { font-size:0.64rem; color:rgba(200,160,80,0.35); font-family:var(--ff-mono); display:block; margin-top:1px; }
-.nav-btn:hover { color:rgba(255,255,255,0.78); background:rgba(232,82,10,0.07); }
-.nav-btn.active {
-  color: #fff;
-  border-left-color: var(--saffron);
-  background: linear-gradient(90deg, rgba(232,82,10,0.16) 0%, transparent 100%);
-}
-.nav-btn.active .nav-hi { color:rgba(240,180,41,0.45); }
-.nav-divider { height:1px; background:rgba(200,160,80,0.08); margin:0.5rem 1.5rem; }
+/* TABLE */
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1.5px solid var(--border-l);}
+table{width:100%;border-collapse:collapse;font-size:0.86rem;}
+thead{background:var(--bg2);}
+th{font-family:var(--ff-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);padding:0.72rem 1rem;text-align:left;border-bottom:1.5px solid var(--border-l);white-space:nowrap;}
+td{padding:0.7rem 1rem;border-bottom:1px solid rgba(200,160,80,0.17);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:rgba(232,82,10,0.025);}
+td strong{font-weight:700;color:var(--ink2);}
+.badge{display:inline-flex;align-items:center;gap:0.22rem;padding:0.19rem 0.62rem;border-radius:100px;font-size:0.67rem;font-weight:700;font-family:var(--ff-mono);}
+.badge-ok{background:rgba(78,107,58,0.12);color:#3a6030;border:1px solid rgba(78,107,58,0.22);}
+.badge-low{background:rgba(212,146,10,0.12);color:#9a6c08;border:1px solid rgba(212,146,10,0.22);}
+.badge-expired{background:rgba(184,50,50,0.1);color:#9e2b2b;border:1px solid rgba(184,50,50,0.22);}
 
-/* ══════════════════ MAIN ══════════════════ */
-main { flex:1; padding:2.2rem 2.5rem; overflow-y:auto; }
+/* BILL */
+.bill-layout{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.bill-form-col{flex:1;min-width:275px;}
+.bill-recv-col{flex:1;min-width:255px;}
+.receipt-box{background:#fff;border:2px dashed var(--border);border-radius:12px;padding:1.4rem;font-family:var(--ff-mono);font-size:0.76rem;line-height:2;color:var(--ink);white-space:pre-wrap;min-height:280px;position:relative;}
+.r-hdr{font-size:0.9rem;font-weight:700;display:block;}
+.r-tot{color:var(--chili);font-weight:700;font-size:0.88rem;display:block;}
+.r-wm{position:absolute;bottom:14px;right:18px;font-size:3.8rem;opacity:0.04;font-family:var(--ff-head);transform:rotate(-14deg);pointer-events:none;user-select:none;}
 
-.page { display:none; }
-.page.active { display:block; animation:pageIn 0.24s ease; }
-@keyframes pageIn {
-  from { opacity:0; transform:translateY(10px); }
-  to   { opacity:1; transform:translateY(0); }
-}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(28,15,5,0.62);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:2rem;width:500px;max-width:95vw;box-shadow:0 24px 64px rgba(0,0,0,0.35);animation:pageIn 0.22s ease;position:relative;}
+.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--saffron),var(--haldi),var(--chili));border-radius:16px 16px 0 0;}
+.modal-title{font-family:var(--ff-head);font-size:1.3rem;margin-bottom:1.3rem;padding-bottom:0.8rem;border-bottom:1px dashed var(--border-l);}
+.modal-title .mt-hi{font-family:var(--ff-mono);font-size:0.68rem;font-weight:400;color:var(--muted);display:block;margin-top:2px;}
 
-/* Page heading */
-.pg-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-.pg-title {
-  font-family: var(--ff-head);
-  font-size: 2rem;
-  color: var(--ink);
-  line-height: 1.05;
-}
-.pg-sub {
-  font-size: 0.78rem;
-  color: var(--muted);
-  margin-top: 0.2rem;
-  font-family: var(--ff-mono);
-  letter-spacing: 0.03em;
-}
-.pg-deco { font-size:1.6rem; opacity:0.2; letter-spacing:-3px; margin-top:4px; }
-
-/* ══════════════════ STAT CARDS ══════════════════ */
-.stats-row { display:flex; gap:1.1rem; margin-bottom:1.9rem; flex-wrap:wrap; }
-.stat-card {
-  flex: 1;
-  min-width: 148px;
-  background: var(--card);
-  border: 1.5px solid var(--border-l);
-  border-radius: 14px;
-  padding: 1.3rem 1.4rem 1.1rem;
-  box-shadow: 0 3px 14px var(--sh2), inset 0 1px 0 rgba(255,255,255,0.65);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: default;
-}
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top:0; left:0; right:0;
-  height: 4px;
-  background: var(--sc-clr, var(--saffron));
-  border-radius: 14px 14px 0 0;
-}
-.stat-card .sc-wm {
-  position:absolute;
-  bottom:-10px; right:8px;
-  font-size:4.5rem;
-  opacity:0.05;
-  line-height:1;
-  pointer-events:none;
-  user-select:none;
-}
-.stat-card:hover { transform:translateY(-3px); box-shadow:0 10px 28px var(--sh); }
-.sc-label {
-  font-family: var(--ff-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.45rem;
-}
-.sc-val {
-  font-family: var(--ff-head);
-  font-size: 2.2rem;
-  color: var(--sc-clr, var(--saffron));
-  line-height: 1;
-}
-.sc-note     { font-size:0.74rem; color:var(--muted); margin-top:0.25rem; }
-.sc-note-hi  { font-size:0.62rem; color:rgba(140,104,64,0.6); display:block; }
-
-/* ══════════════════ QUICK TILES ══════════════════ */
-.quick-row { display:flex; gap:1rem; margin-bottom:1.9rem; flex-wrap:wrap; }
-.quick-tile {
-  flex: 1;
-  min-width: 130px;
-  background: var(--card);
-  border: 1.5px solid var(--border-l);
-  border-radius: 14px;
-  padding: 1.25rem 1rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 2px 10px var(--sh2);
-  position: relative;
-  overflow: hidden;
-}
-.quick-tile::after {
-  content: '';
-  position: absolute;
-  bottom:0; left:0; right:0;
-  height: 3px;
-  background: var(--qt-clr, var(--saffron));
-  border-radius: 0 0 14px 14px;
-  transform: scaleX(0);
-  transition: transform 0.22s;
-}
-.quick-tile:hover::after { transform:scaleX(1); }
-.quick-tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 32px var(--sh);
-  border-color: var(--qt-clr, var(--saffron));
-}
-.qt-icon  { font-size:2rem; margin-bottom:0.4rem; }
-.qt-en    { font-weight:800; font-size:0.9rem; color:var(--ink); }
-.qt-hi    { font-size:0.67rem; color:var(--muted); margin-top:0.2rem; font-family:var(--ff-mono); }
-
-/* ══════════════════ PANELS ══════════════════ */
-.panel {
-  background: var(--card);
-  border: 1.5px solid var(--border-l);
-  border-radius: 14px;
-  padding: 1.5rem 1.75rem;
-  box-shadow: 0 2px 12px var(--sh2), inset 0 1px 0 rgba(255,255,255,0.55);
-  margin-bottom: 1.4rem;
-  position: relative;
-  overflow: hidden;
-}
-.panel::before {
-  content:'';
-  position:absolute;
-  top:0; left:0; right:0;
-  height: 3px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--saffron) 0, var(--saffron) 6px,
-    var(--haldi)   6px, var(--haldi) 12px,
-    var(--mehendi) 12px, var(--mehendi) 18px,
-    var(--haldi)   18px, var(--haldi) 24px
-  );
-  opacity: 0.45;
-}
-.panel-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.2rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 1px dashed var(--border-l);
-}
-.panel-title {
-  font-family: var(--ff-body);
-  font-size: 0.98rem;
-  font-weight: 800;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-.panel-title .pt-hi {
-  font-size: 0.65rem;
-  font-weight: 400;
-  color: var(--muted);
-  font-family: var(--ff-mono);
-  margin-left: 0.2rem;
-}
-
-/* ══════════════════ TABS ══════════════════ */
-.tabs { display:flex; margin-bottom:1.3rem; border-bottom:2px solid var(--border-l); }
-.tab {
-  background: none; border: none;
-  padding: 0.58rem 1.15rem;
-  font-family: var(--ff-body);
-  font-size: 0.87rem;
-  font-weight: 700;
-  color: var(--muted);
-  cursor: pointer;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
-  transition: all 0.15s;
-}
-.tab:hover { color:var(--saffron); }
-.tab.active { color:var(--saffron); border-bottom-color:var(--saffron); }
-.tab-body { display:none; }
-.tab-body.active { display:block; animation:pageIn 0.2s ease; }
-
-/* ══════════════════ FORMS ══════════════════ */
-.form-row { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:0.9rem; }
-.field { display:flex; flex-direction:column; gap:0.28rem; flex:1; min-width:150px; }
-.field label {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.field label .lbl-hi {
-  font-size: 0.6rem;
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: 0;
-  color: rgba(140,104,64,0.55);
-  margin-left: 0.3rem;
-}
-.field input, .field select {
-  background: var(--bg);
-  border: 1.5px solid var(--border-l);
-  border-radius: 8px;
-  padding: 0.58rem 0.9rem;
-  font-family: var(--ff-body);
-  font-size: 0.9rem;
-  color: var(--ink);
-  font-weight: 500;
-  outline: none;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-.field input:focus, .field select:focus {
-  border-color: var(--saffron);
-  box-shadow: 0 0 0 3px rgba(232,82,10,0.1);
-}
-.field input::placeholder { color:rgba(140,104,64,0.4); }
-
-/* Buttons */
-.btn-row { display:flex; gap:0.65rem; flex-wrap:wrap; margin-top:0.9rem; }
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.56rem 1.3rem;
-  border: none;
-  border-radius: 8px;
-  font-family: var(--ff-body);
-  font-size: 0.87rem;
-  font-weight: 800;
-  cursor: pointer;
-  transition: all 0.15s;
-  letter-spacing: 0.02em;
-}
-.btn-primary {
-  background: var(--saffron); color:#fff;
-  box-shadow: 0 4px 14px rgba(232,82,10,0.3);
-}
-.btn-primary:hover { background:var(--deep-saf); transform:translateY(-1px); box-shadow:0 6px 20px rgba(232,82,10,0.42); }
-.btn-green { background:var(--mehendi); color:#fff; box-shadow:0 3px 10px rgba(78,107,58,0.28); }
-.btn-green:hover  { background:var(--dark-green); }
-.btn-red   { background:var(--chili); color:#fff; box-shadow:0 3px 10px rgba(184,50,50,0.28); }
-.btn-red:hover    { background:#9e2b2b; }
-.btn-outline {
-  background: transparent;
-  border: 1.5px solid var(--border);
-  color: var(--muted);
-}
-.btn-outline:hover { border-color:var(--saffron); color:var(--saffron); }
-.btn-sm { padding:0.3rem 0.78rem; font-size:0.77rem; }
-
-/* ══════════════════ TABLE ══════════════════ */
-.tbl-wrap { overflow-x:auto; border-radius:10px; border:1.5px solid var(--border-l); }
-table { width:100%; border-collapse:collapse; font-size:0.86rem; }
-thead { background:var(--bg2); }
-th {
-  font-family: var(--ff-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 0.72rem 1rem;
-  text-align: left;
-  border-bottom: 1.5px solid var(--border-l);
-  white-space: nowrap;
-}
-td { padding:0.7rem 1rem; border-bottom:1px solid rgba(200,160,80,0.17); vertical-align:middle; }
-tr:last-child td { border-bottom:none; }
-tbody tr:hover td { background:rgba(232,82,10,0.025); }
-td strong { font-weight:700; color:var(--ink2); }
-
-/* Badges */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.22rem;
-  padding: 0.19rem 0.62rem;
-  border-radius: 100px;
-  font-size: 0.67rem;
-  font-weight: 700;
-  font-family: var(--ff-mono);
-}
-.badge-ok      { background:rgba(78,107,58,0.12);  color:#3a6030; border:1px solid rgba(78,107,58,0.22); }
-.badge-low     { background:rgba(212,146,10,0.12); color:#9a6c08; border:1px solid rgba(212,146,10,0.22); }
-.badge-expired { background:rgba(184,50,50,0.1);   color:#9e2b2b; border:1px solid rgba(184,50,50,0.22); }
-
-/* ══════════════════ BILL ══════════════════ */
-.bill-layout { display:flex; gap:1.5rem; flex-wrap:wrap; }
-.bill-form-col { flex:1; min-width:275px; }
-.bill-recv-col { flex:1; min-width:255px; }
-
-.receipt-box {
-  background: #fff;
-  border: 2px dashed var(--border);
-  border-radius: 12px;
-  padding: 1.4rem;
-  font-family: var(--ff-mono);
-  font-size: 0.76rem;
-  line-height: 2;
-  color: var(--ink);
-  white-space: pre-wrap;
-  min-height: 280px;
-  position: relative;
-}
-.receipt-box .r-hdr { font-size:0.9rem; font-weight:700; }
-.receipt-box .r-tot { color:var(--chili); font-weight:700; font-size:0.88rem; }
-.r-wm {
-  position:absolute; bottom:14px; right:18px;
-  font-size:3.8rem; opacity:0.04;
-  font-family:var(--ff-head);
-  transform:rotate(-14deg);
-  pointer-events:none; user-select:none;
-}
-
-/* ══════════════════ MODAL ══════════════════ */
-.modal-overlay {
-  display: none;
-  position: fixed; inset:0;
-  background: rgba(28,15,5,0.62);
-  z-index: 500;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(4px);
-}
-.modal-overlay.open { display:flex; }
-.modal {
-  background: var(--card);
-  border: 1.5px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
-  width: 500px; max-width:95vw;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
-  animation: pageIn 0.22s ease;
-  position: relative;
-}
-.modal::before {
-  content:''; position:absolute;
-  top:0; left:0; right:0; height:4px;
-  background: linear-gradient(90deg, var(--saffron), var(--haldi), var(--chili));
-  border-radius:16px 16px 0 0;
-}
-.modal-title {
-  font-family: var(--ff-head);
-  font-size: 1.3rem;
-  margin-bottom: 1.3rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px dashed var(--border-l);
-}
-.modal-title .mt-hi {
-  font-family: var(--ff-mono);
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: var(--muted);
-  display:block;
-  margin-top:2px;
-}
-
-/* ══════════════════ TOAST ══════════════════ */
-#toast-wrap {
-  position: fixed;
-  bottom: 1.4rem; right: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  z-index: 9999;
-  pointer-events: none;
-}
-.toast {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: var(--sidebar-bg);
-  color: #fff;
-  padding: 0.75rem 1.1rem;
-  border-radius: 10px;
-  font-size: 0.83rem;
-  font-weight: 600;
-  font-family: var(--ff-body);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
-  border-left: 4px solid var(--saffron);
-  animation: toastPop 0.28s cubic-bezier(0.34,1.56,0.64,1);
-  max-width: 310px;
-}
-.toast.err { border-left-color:var(--chili); }
-.toast.ok  { border-left-color:var(--mehendi); }
-@keyframes toastPop {
-  from { opacity:0; transform:translateX(28px) scale(0.9); }
-  to   { opacity:1; transform:translateX(0)   scale(1);   }
-}
-
-/* Empty state */
-.empty { text-align:center; padding:2.5rem; color:var(--muted); }
-.empty .ei { font-size:2.6rem; margin-bottom:0.5rem; opacity:0.28; }
-.empty p   { font-size:0.82rem; font-family:var(--ff-mono); }
-
-/* Search */
-.search-bar {
-  background: var(--bg);
-  border: 1.5px solid var(--border-l);
-  border-radius: 8px;
-  padding: 0.4rem 0.88rem;
-  font-family: var(--ff-body);
-  font-size: 0.85rem;
-  color: var(--ink);
-  font-weight: 500;
-  outline: none;
-  width: 195px;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-.search-bar:focus {
-  border-color: var(--saffron);
-  box-shadow: 0 0 0 3px rgba(232,82,10,0.1);
-}
+/* TOAST */
+#toast-wrap{position:fixed;bottom:1.4rem;right:1.4rem;display:flex;flex-direction:column;gap:0.45rem;z-index:9999;pointer-events:none;}
+.toast{display:flex;align-items:center;gap:0.6rem;background:var(--sidebar-bg);color:#fff;padding:0.75rem 1.1rem;border-radius:10px;font-size:0.83rem;font-weight:600;font-family:var(--ff-body);box-shadow:0 8px 28px rgba(0,0,0,0.4);border-left:4px solid var(--saffron);animation:toastPop 0.28s cubic-bezier(0.34,1.56,0.64,1);max-width:310px;}
+.toast.err{border-left-color:var(--chili);}
+.toast.ok{border-left-color:var(--mehendi);}
+@keyframes toastPop{from{opacity:0;transform:translateX(28px) scale(0.9);}to{opacity:1;transform:translateX(0) scale(1);}}
+.empty{text-align:center;padding:2.5rem;color:var(--muted);}
+.empty .ei{font-size:2.6rem;margin-bottom:0.5rem;opacity:0.28;}
+.empty p{font-size:0.82rem;font-family:var(--ff-mono);}
+.search-bar{background:var(--bg);border:1.5px solid var(--border-l);border-radius:8px;padding:0.4rem 0.88rem;font-family:var(--ff-body);font-size:0.85rem;color:var(--ink);font-weight:500;outline:none;width:195px;transition:border-color 0.15s,box-shadow 0.15s;}
+.search-bar:focus{border-color:var(--saffron);box-shadow:0 0 0 3px rgba(232,82,10,0.1);}
 </style>
 </head>
 <body>
 
-<!-- ══════════ HEADER ══════════ -->
 <header>
   <div class="logo-wrap">
-    <div class="logo-badge">🛒</div>
+    <div class="logo-badge">&#128722;</div>
     <div class="logo-texts">
       <div class="logo-main">Kirana Ki <span>Dukan</span></div>
-      <div class="logo-tag">General Store Management System · Est. 2025</div>
+      <div class="logo-tag">General Store Management System &middot; Est. 2025</div>
     </div>
   </div>
   <div class="db-pill">
     <div class="db-dot" id="db-dot"></div>
-    <span id="db-status">Connecting…</span>
+    <span id="db-status">Connecting&hellip;</span>
   </div>
 </header>
 
-<!-- ══════════ SHELL ══════════ -->
 <div class="shell">
-
-  <!-- SIDEBAR -->
   <aside>
     <div class="nav-label">Main</div>
     <button class="nav-btn active" onclick="goPage('dashboard',this)">
-      <span class="ni">🏠</span>
-      <span><span class="nav-en">Dashboard</span><span class="nav-hi">मुख्य पृष्ठ</span></span>
+      <span class="ni">&#127968;</span>
+      <span><span class="nav-en">Dashboard</span><span class="nav-hi">&#2350;&#2369;&#2326;&#2381;&#2351; &#2346;&#2371;&#2359;&#2381;&#2336;</span></span>
     </button>
-
     <div class="nav-divider"></div>
     <div class="nav-label">Operations</div>
-
     <button class="nav-btn" onclick="goPage('stock',this)">
-      <span class="ni">📦</span>
-      <span><span class="nav-en">Stock</span><span class="nav-hi">माल / सामान</span></span>
+      <span class="ni">&#128230;</span>
+      <span><span class="nav-en">Stock</span><span class="nav-hi">&#2350;&#2366;&#2354; / &#2360;&#2366;&#2350;&#2366;&#2344;</span></span>
     </button>
     <button class="nav-btn" onclick="goPage('bill',this)">
-      <span class="ni">🧾</span>
-      <span><span class="nav-en">Generate Bill</span><span class="nav-hi">बिल बनाएं</span></span>
+      <span class="ni">&#129534;</span>
+      <span><span class="nav-en">Generate Bill</span><span class="nav-hi">&#2348;&#2367;&#2354; &#2348;&#2344;&#2366;&#2319;&#2306;</span></span>
     </button>
     <button class="nav-btn" onclick="goPage('sales',this)">
-      <span class="ni">📈</span>
-      <span><span class="nav-en">Sales</span><span class="nav-hi">बिक्री</span></span>
+      <span class="ni">&#128200;</span>
+      <span><span class="nav-en">Sales</span><span class="nav-hi">&#2348;&#2367;&#2325;&#2381;&#2352;&#2368;</span></span>
     </button>
     <button class="nav-btn" onclick="goPage('purchase',this)">
-      <span class="ni">🛍️</span>
-      <span><span class="nav-en">Purchase</span><span class="nav-hi">खरीद</span></span>
+      <span class="ni">&#128717;</span>
+      <span><span class="nav-en">Purchase</span><span class="nav-hi">&#2326;&#2352;&#2368;&#2342;</span></span>
     </button>
   </aside>
 
-  <!-- MAIN -->
   <main>
 
-    <!-- ══════════════ DASHBOARD ══════════════ -->
+    <!-- DASHBOARD -->
     <div class="page active" id="page-dashboard">
       <div class="pg-head">
         <div>
-          <div class="pg-title">Welcome! 🙏</div>
-          <div class="pg-sub">Today's store overview · <span style="color:rgba(140,104,64,0.7)">आज का हाल</span></div>
+          <div class="pg-title">Welcome! &#128591;</div>
+          <div class="pg-sub">Today's store overview &middot; <span style="color:rgba(140,104,64,0.8)">&#2310;&#2332; &#2325;&#2366; &#2361;&#2366;&#2354;</span></div>
         </div>
-        <div class="pg-deco">✦ ✦ ✦</div>
+        <div class="pg-deco">&#10022; &#10022; &#10022;</div>
       </div>
-
       <div class="phulkari" style="margin-bottom:1.75rem"></div>
-
       <div class="stats-row">
         <div class="stat-card" style="--sc-clr:var(--saffron)">
-          <div class="sc-wm">📦</div>
+          <div class="sc-wm">&#128230;</div>
           <div class="sc-label">Total Items</div>
-          <div class="sc-val" id="s-items">—</div>
-          <div class="sc-note">In stock <span class="sc-note-hi">स्टॉक में</span></div>
+          <div class="sc-val" id="s-items">&#8212;</div>
+          <div class="sc-note">In stock <span class="sc-note-hi">&#2360;&#2381;&#2335;&#2377;&#2325; &#2350;&#2375;&#2306;</span></div>
         </div>
         <div class="stat-card" style="--sc-clr:var(--mustard)">
-          <div class="sc-wm">🧾</div>
+          <div class="sc-wm">&#129534;</div>
           <div class="sc-label">Bills Generated</div>
-          <div class="sc-val" id="s-bills">—</div>
-          <div class="sc-note">Total bills <span class="sc-note-hi">कुल बिल</span></div>
+          <div class="sc-val" id="s-bills">&#8212;</div>
+          <div class="sc-note">Total bills <span class="sc-note-hi">&#2325;&#2369;&#2354; &#2348;&#2367;&#2354;</span></div>
         </div>
         <div class="stat-card" style="--sc-clr:var(--mehendi)">
-          <div class="sc-wm">₹</div>
+          <div class="sc-wm">&#8377;</div>
           <div class="sc-label">Revenue</div>
-          <div class="sc-val" id="s-rev">—</div>
-          <div class="sc-note">Total sales <span class="sc-note-hi">कुल बिक्री</span></div>
+          <div class="sc-val" id="s-rev">&#8212;</div>
+          <div class="sc-note">Total sales <span class="sc-note-hi">&#2325;&#2369;&#2354; &#2348;&#2367;&#2325;&#2381;&#2352;&#2368;</span></div>
         </div>
         <div class="stat-card" style="--sc-clr:var(--neel)">
-          <div class="sc-wm">🛍️</div>
+          <div class="sc-wm">&#128717;</div>
           <div class="sc-label">Purchases</div>
-          <div class="sc-val" id="s-pur">—</div>
-          <div class="sc-note">Orders logged <span class="sc-note-hi">खरीद दर्ज</span></div>
+          <div class="sc-val" id="s-pur">&#8212;</div>
+          <div class="sc-note">Orders logged <span class="sc-note-hi">&#2326;&#2352;&#2368;&#2342; &#2342;&#2352;&#2381;&#2332;</span></div>
         </div>
       </div>
-
       <div class="quick-row">
         <div class="quick-tile" style="--qt-clr:var(--saffron)" onclick="goPage('stock',sideNav[1])">
-          <div class="qt-icon">📦</div>
+          <div class="qt-icon">&#128230;</div>
           <div class="qt-en">Manage Stock</div>
-          <div class="qt-hi">माल देखें · जोड़ें · हटाएं</div>
+          <div class="qt-hi">&#2350;&#2366;&#2354; &#2342;&#2375;&#2326;&#2375;&#2306; &middot; &#2332;&#2379;&#2337;&#2364;&#2375;&#2306; &middot; &#2361;&#2335;&#2366;&#2319;&#2306;</div>
         </div>
         <div class="quick-tile" style="--qt-clr:var(--mustard)" onclick="goPage('bill',sideNav[2])">
-          <div class="qt-icon">🧾</div>
+          <div class="qt-icon">&#129534;</div>
           <div class="qt-en">Generate Bill</div>
-          <div class="qt-hi">GST के साथ बिल</div>
+          <div class="qt-hi">GST &#2325;&#2375; &#2360;&#2366;&#2925; &#2348;&#2367;&#2354;</div>
         </div>
         <div class="quick-tile" style="--qt-clr:var(--mehendi)" onclick="goPage('sales',sideNav[3])">
-          <div class="qt-icon">📈</div>
+          <div class="qt-icon">&#128200;</div>
           <div class="qt-en">Sales Log</div>
-          <div class="qt-hi">बिक्री का इतिहास</div>
+          <div class="qt-hi">&#2348;&#2367;&#2325;&#2381;&#2352;&#2368; &#2325;&#2366; &#2311;&#2340;&#2367;&#2361;&#2366;&#2360;</div>
         </div>
         <div class="quick-tile" style="--qt-clr:var(--neel)" onclick="goPage('purchase',sideNav[4])">
-          <div class="qt-icon">🛍️</div>
+          <div class="qt-icon">&#128717;</div>
           <div class="qt-en">Purchase Record</div>
-          <div class="qt-hi">सप्लायर से माल</div>
+          <div class="qt-hi">&#2360;&#2346;&#2381;&#2354;&#2366;&#2351;&#2352; &#2360;&#2375; &#2350;&#2366;&#2354;</div>
         </div>
       </div>
-
       <div class="panel">
         <div class="panel-head">
-          <div class="panel-title">📋 Recent Stock Entries <span class="pt-hi">हाल का सामान</span></div>
+          <div class="panel-title">&#128203; Recent Stock Entries <span class="pt-hi">&#2361;&#2366;&#2354; &#2325;&#2366; &#2360;&#2366;&#2350;&#2366;&#2344;</span></div>
           <span style="font-family:var(--ff-mono);font-size:0.66rem;color:var(--muted)">Last 6 items</span>
         </div>
         <div class="tbl-wrap">
           <table>
-            <thead>
-              <tr>
-                <th>Product</th><th>Company</th><th>Expiry</th>
-                <th>Qty</th><th>Price (₹)</th><th>Status</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Product</th><th>Company</th><th>Expiry</th><th>Qty</th><th>Price (Rs.)</th><th>Status</th></tr></thead>
             <tbody id="dash-stock-tbody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- ══════════════ STOCK ══════════════ -->
+    <!-- STOCK -->
     <div class="page" id="page-stock">
       <div class="pg-head">
         <div>
-          <div class="pg-title">📦 Stock Management</div>
-          <div class="pg-sub">Full inventory control · <span style="color:rgba(140,104,64,0.7)">सब सामान का हिसाब</span></div>
+          <div class="pg-title">&#128230; Stock Management</div>
+          <div class="pg-sub">Full inventory control &middot; <span style="color:rgba(140,104,64,0.8)">&#2360;&#2348; &#2360;&#2366;&#2350;&#2366;&#2344; &#2325;&#2366; &#2361;&#2367;&#2360;&#2366;&#2348;</span></div>
         </div>
       </div>
       <div class="phulkari" style="margin-bottom:1.4rem"></div>
-
       <div class="tabs">
-        <button class="tab active" onclick="stTab('add',this)">➕ Add New Item</button>
-        <button class="tab" onclick="stTab('list',this)">📋 View All Stock</button>
+        <button class="tab active" onclick="stTab('add',this)">&#10133; Add New Item</button>
+        <button class="tab" onclick="stTab('list',this)">&#128203; View All Stock</button>
       </div>
-
-      <!-- ADD TAB -->
       <div class="tab-body active" id="st-add">
         <div class="panel">
-          <div class="panel-head">
-            <div class="panel-title">➕ Add New Product <span class="pt-hi">नया सामान जोड़ें</span></div>
+          <div class="panel-head"><div class="panel-title">&#10133; Add New Product <span class="pt-hi">&#2344;&#2351;&#2366; &#2360;&#2366;&#2350;&#2366;&#2344; &#2332;&#2379;&#2337;&#2364;&#2375;&#2306;</span></div></div>
+          <div class="form-row">
+            <div class="field"><label>Product Name <span class="lbl-hi">&#2313;&#2340;&#2381;&#2346;&#2366;&#2342; &#2325;&#2366; &#2344;&#2366;&#2350;</span></label><input id="st-pname" placeholder="e.g. Aata, Chawal, Sugar..."></div>
+            <div class="field"><label>Company <span class="lbl-hi">&#2325;&#2306;&#2346;&#2344;&#2368;</span></label><input id="st-company" placeholder="e.g. Patanjali, Amul..."></div>
           </div>
           <div class="form-row">
-            <div class="field">
-              <label>Product Name <span class="lbl-hi">उत्पाद का नाम</span></label>
-              <input id="st-pname" placeholder="e.g. Aata, Chawal, Sugar…">
-            </div>
-            <div class="field">
-              <label>Company <span class="lbl-hi">कंपनी</span></label>
-              <input id="st-company" placeholder="e.g. Patanjali, Amul…">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label>Expiry Date <span class="lbl-hi">समाप्ति तिथि</span></label>
-              <input id="st-expiry" type="month">
-            </div>
-            <div class="field">
-              <label>Quantity <span class="lbl-hi">मात्रा</span></label>
-              <input id="st-qty" type="number" min="0" placeholder="0">
-            </div>
-            <div class="field">
-              <label>Price (₹) <span class="lbl-hi">कीमत</span></label>
-              <input id="st-price" type="number" min="0" placeholder="0">
-            </div>
+            <div class="field"><label>Expiry Date <span class="lbl-hi">&#2360;&#2350;&#2366;&#2346;&#2381;&#2340;&#2367; &#2340;&#2367;&#2341;&#2367;</span></label><input id="st-expiry" type="month"></div>
+            <div class="field"><label>Quantity <span class="lbl-hi">&#2350;&#2366;&#2340;&#2381;&#2352;&#2366;</span></label><input id="st-qty" type="number" min="0" placeholder="0"></div>
+            <div class="field"><label>Price (Rs.) <span class="lbl-hi">&#2325;&#2368;&#2350;&#2340;</span></label><input id="st-price" type="number" min="0" placeholder="0"></div>
           </div>
           <div class="btn-row">
-            <button class="btn btn-primary" onclick="addItem()">➕ Add to Stock</button>
+            <button class="btn btn-primary" onclick="addItem()">&#10133; Add to Stock</button>
             <button class="btn btn-outline" onclick="clearStForm()">Clear</button>
           </div>
         </div>
       </div>
-
-      <!-- VIEW TAB -->
       <div class="tab-body" id="st-list">
         <div class="panel">
           <div class="panel-head">
-            <div class="panel-title">📋 All Items <span class="pt-hi">सारा माल</span></div>
-            <input class="search-bar" id="stock-search" placeholder="🔍 Search items…" oninput="filterStock()">
+            <div class="panel-title">&#128203; All Items <span class="pt-hi">&#2360;&#2366;&#2352;&#2366; &#2350;&#2366;&#2354;</span></div>
+            <input class="search-bar" id="stock-search" placeholder="Search items..." oninput="filterStock()">
           </div>
           <div class="tbl-wrap">
             <table>
-              <thead>
-                <tr>
-                  <th>#</th><th>Product</th><th>Company</th><th>Expiry</th>
-                  <th>Qty</th><th>Price (₹)</th><th>Status</th><th>Actions</th>
-                </tr>
-              </thead>
+              <thead><tr><th>#</th><th>Product</th><th>Company</th><th>Expiry</th><th>Qty</th><th>Price (Rs.)</th><th>Status</th><th>Actions</th></tr></thead>
               <tbody id="stock-tbody"></tbody>
             </table>
           </div>
@@ -855,160 +347,103 @@ td strong { font-weight:700; color:var(--ink2); }
       </div>
     </div>
 
-    <!-- ══════════════ BILL ══════════════ -->
+    <!-- BILL -->
     <div class="page" id="page-bill">
       <div class="pg-head">
         <div>
-          <div class="pg-title">🧾 Generate Bill</div>
-          <div class="pg-sub">Create customer receipt with GST · <span style="color:rgba(140,104,64,0.7)">बिल बनाएं</span></div>
+          <div class="pg-title">&#129534; Generate Bill</div>
+          <div class="pg-sub">Create customer receipt with GST &middot; <span style="color:rgba(140,104,64,0.8)">&#2348;&#2367;&#2354; &#2348;&#2344;&#2366;&#2319;&#2306;</span></div>
         </div>
       </div>
       <div class="phulkari" style="margin-bottom:1.4rem"></div>
-
       <div class="bill-layout">
         <div class="bill-form-col">
           <div class="panel">
-            <div class="panel-head">
-              <div class="panel-title">🏪 Store Information <span class="pt-hi">दुकान की जानकारी</span></div>
+            <div class="panel-head"><div class="panel-title">&#127978; Store Information <span class="pt-hi">&#2342;&#2369;&#2325;&#2366;&#2344; &#2325;&#2368; &#2332;&#2366;&#2344;&#2325;&#2366;&#2352;&#2368;</span></div></div>
+            <div class="form-row">
+              <div class="field"><label>Store Name <span class="lbl-hi">&#2342;&#2369;&#2325;&#2366;&#2344; &#2325;&#2366; &#2344;&#2366;&#2350;</span></label><input id="b-store" placeholder="Kirana Ki Dukan" oninput="previewBill()"></div>
             </div>
             <div class="form-row">
-              <div class="field">
-                <label>Store Name <span class="lbl-hi">दुकान का नाम</span></label>
-                <input id="b-store" placeholder="Kirana Ki Dukan" oninput="previewBill()">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="field">
-                <label>Address <span class="lbl-hi">पता</span></label>
-                <input id="b-addr" placeholder="Gali No. 4, Bazaar Road" oninput="previewBill()">
-              </div>
-              <div class="field">
-                <label>Phone <span class="lbl-hi">फोन</span></label>
-                <input id="b-phone" placeholder="98765 43210" oninput="previewBill()">
-              </div>
+              <div class="field"><label>Address <span class="lbl-hi">&#2346;&#2340;&#2366;</span></label><input id="b-addr" placeholder="Gali No. 4, Bazaar Road" oninput="previewBill()"></div>
+              <div class="field"><label>Phone <span class="lbl-hi">&#2347;&#2379;&#2344;</span></label><input id="b-phone" placeholder="98765 43210" oninput="previewBill()"></div>
             </div>
           </div>
-
           <div class="panel">
-            <div class="panel-head">
-              <div class="panel-title">📦 Item Details <span class="pt-hi">सामान की जानकारी</span></div>
-            </div>
+            <div class="panel-head"><div class="panel-title">&#128230; Item Details <span class="pt-hi">&#2360;&#2366;&#2350;&#2366;&#2344; &#2325;&#2368; &#2332;&#2366;&#2344;&#2325;&#2366;&#2352;&#2368;</span></div></div>
             <div class="form-row">
-              <div class="field">
-                <label>Select Product <span class="lbl-hi">सामान चुनें</span></label>
-                <select id="b-product" onchange="fillBillFromStock()">
-                  <option value="">— Select Product —</option>
-                </select>
+              <div class="field"><label>Select Product <span class="lbl-hi">&#2360;&#2366;&#2350;&#2366;&#2344; &#2330;&#2369;&#2344;&#2375;&#2306;</span></label>
+                <select id="b-product" onchange="fillBillFromStock()"><option value="">-- Select Product --</option></select>
               </div>
             </div>
             <div class="form-row">
-              <div class="field">
-                <label>Quantity <span class="lbl-hi">मात्रा</span></label>
-                <input id="b-qty" type="number" min="1" value="1" oninput="previewBill()">
-              </div>
-              <div class="field">
-                <label>Rate (₹) <span class="lbl-hi">दर</span></label>
-                <input id="b-rate" type="number" min="0" placeholder="0" oninput="previewBill()">
-              </div>
-              <div class="field">
-                <label>GST (%) <span class="lbl-hi">कर</span></label>
-                <input id="b-gst" type="number" value="18" min="0" max="100" oninput="previewBill()">
-              </div>
+              <div class="field"><label>Quantity <span class="lbl-hi">&#2350;&#2366;&#2340;&#2381;&#2352;&#2366;</span></label><input id="b-qty" type="number" min="1" value="1" oninput="previewBill()"></div>
+              <div class="field"><label>Rate (Rs.) <span class="lbl-hi">&#2342;&#2352;</span></label><input id="b-rate" type="number" min="0" placeholder="0" oninput="previewBill()"></div>
+              <div class="field"><label>GST (%) <span class="lbl-hi">&#2325;&#2352;</span></label><input id="b-gst" type="number" value="18" min="0" max="100" oninput="previewBill()"></div>
             </div>
             <div class="btn-row">
-              <button class="btn btn-primary" onclick="generateBill()">🧾 Generate Bill</button>
+              <button class="btn btn-primary" onclick="generateBill()">&#129534; Generate Bill</button>
               <button class="btn btn-outline" onclick="clearBill()">Clear</button>
             </div>
           </div>
         </div>
-
         <div class="bill-recv-col">
           <div class="panel" style="height:100%;min-height:360px">
             <div class="panel-head">
-              <div class="panel-title">👁️ Bill Preview <span class="pt-hi">बिल देखें</span></div>
-              <button class="btn btn-green btn-sm" onclick="printBill()">🖨️ Print</button>
+              <div class="panel-title">&#128065; Bill Preview <span class="pt-hi">&#2348;&#2367;&#2354; &#2342;&#2375;&#2326;&#2375;&#2306;</span></div>
+              <button class="btn btn-green btn-sm" onclick="printBill()">&#128424; Print</button>
             </div>
-            <div class="receipt-box" id="bill-receipt">
-              <div class="r-wm">₹</div>
-Fill in the form to preview the bill here…</div>
+            <div class="receipt-box" id="bill-receipt"><div class="r-wm">Rs.</div>Fill in the form to preview the bill here...</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ══════════════ SALES ══════════════ -->
+    <!-- SALES -->
     <div class="page" id="page-sales">
       <div class="pg-head">
         <div>
-          <div class="pg-title">📈 Sales Log</div>
-          <div class="pg-sub">Complete sales history · <span style="color:rgba(140,104,64,0.7)">बिक्री का रिकॉर्ड</span></div>
+          <div class="pg-title">&#128200; Sales Log</div>
+          <div class="pg-sub">Complete sales history &middot; <span style="color:rgba(140,104,64,0.8)">&#2348;&#2367;&#2325;&#2381;&#2352;&#2368; &#2325;&#2366; &#2352;&#2367;&#2325;&#2377;&#2352;&#2381;&#2337;</span></div>
         </div>
       </div>
       <div class="phulkari" style="margin-bottom:1.4rem"></div>
-
       <div class="panel">
         <div class="panel-head">
-          <div class="panel-title">📋 All Sales Records <span class="pt-hi">सारी बिक्री</span></div>
-          <div style="font-family:var(--ff-mono);font-size:0.76rem;color:var(--muted)">
-            Total Revenue: <strong style="color:var(--saffron);font-size:1.05rem" id="sales-grand">₹0</strong>
-          </div>
+          <div class="panel-title">&#128203; All Sales Records <span class="pt-hi">&#2360;&#2366;&#2352;&#2368; &#2348;&#2367;&#2325;&#2381;&#2352;&#2368;</span></div>
+          <div style="font-family:var(--ff-mono);font-size:0.76rem;color:var(--muted)">Total Revenue: <strong style="color:var(--saffron);font-size:1.05rem" id="sales-grand">Rs. 0</strong></div>
         </div>
         <div class="tbl-wrap">
           <table>
-            <thead>
-              <tr>
-                <th>#</th><th>Product</th><th>Qty</th>
-                <th>Rate (₹)</th><th>GST %</th><th>Total (₹)</th><th>Time</th>
-              </tr>
-            </thead>
+            <thead><tr><th>#</th><th>Product</th><th>Qty</th><th>Rate (Rs.)</th><th>GST %</th><th>Total (Rs.)</th><th>Time</th></tr></thead>
             <tbody id="sales-tbody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- ══════════════ PURCHASE ══════════════ -->
+    <!-- PURCHASE -->
     <div class="page" id="page-purchase">
       <div class="pg-head">
         <div>
-          <div class="pg-title">🛍️ Purchase</div>
-          <div class="pg-sub">Record incoming goods from supplier · <span style="color:rgba(140,104,64,0.7)">सप्लायर से माल</span></div>
+          <div class="pg-title">&#128717; Purchase</div>
+          <div class="pg-sub">Record incoming goods from supplier &middot; <span style="color:rgba(140,104,64,0.8)">&#2360;&#2346;&#2381;&#2354;&#2366;&#2351;&#2352; &#2360;&#2375; &#2350;&#2366;&#2354;</span></div>
         </div>
       </div>
       <div class="phulkari" style="margin-bottom:1.4rem"></div>
-
       <div class="panel">
-        <div class="panel-head">
-          <div class="panel-title">➕ Add Purchase Entry <span class="pt-hi">खरीद दर्ज करें</span></div>
-        </div>
+        <div class="panel-head"><div class="panel-title">&#10133; Add Purchase Entry <span class="pt-hi">&#2326;&#2352;&#2368;&#2342; &#2342;&#2352;&#2381;&#2332; &#2325;&#2352;&#2375;&#2306;</span></div></div>
         <div class="form-row">
-          <div class="field">
-            <label>Product Name <span class="lbl-hi">उत्पाद का नाम</span></label>
-            <input id="p-pname" placeholder="Product name…">
-          </div>
-          <div class="field">
-            <label>Quantity <span class="lbl-hi">मात्रा</span></label>
-            <input id="p-qty" type="number" min="1" placeholder="0">
-          </div>
-          <div class="field">
-            <label>Cost (₹) <span class="lbl-hi">लागत</span></label>
-            <input id="p-cost" type="number" min="0" placeholder="0">
-          </div>
+          <div class="field"><label>Product Name <span class="lbl-hi">&#2313;&#2340;&#2381;&#2346;&#2366;&#2342; &#2325;&#2366; &#2344;&#2366;&#2350;</span></label><input id="p-pname" placeholder="Product name..."></div>
+          <div class="field"><label>Quantity <span class="lbl-hi">&#2350;&#2366;&#2340;&#2381;&#2352;&#2366;</span></label><input id="p-qty" type="number" min="1" placeholder="0"></div>
+          <div class="field"><label>Cost (Rs.) <span class="lbl-hi">&#2354;&#2366;&#2327;&#2340;</span></label><input id="p-cost" type="number" min="0" placeholder="0"></div>
         </div>
-        <div class="btn-row">
-          <button class="btn btn-primary" onclick="addPurchase()">➕ Record Purchase</button>
-        </div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="addPurchase()">&#10133; Record Purchase</button></div>
       </div>
-
       <div class="panel">
-        <div class="panel-head">
-          <div class="panel-title">📋 Purchase History <span class="pt-hi">खरीद का इतिहास</span></div>
-        </div>
+        <div class="panel-head"><div class="panel-title">&#128203; Purchase History <span class="pt-hi">&#2326;&#2352;&#2368;&#2342; &#2325;&#2366; &#2311;&#2340;&#2367;&#2361;&#2366;&#2360;</span></div></div>
         <div class="tbl-wrap">
           <table>
-            <thead>
-              <tr><th>#</th><th>Product</th><th>Qty</th><th>Cost (₹)</th><th>Time</th></tr>
-            </thead>
+            <thead><tr><th>#</th><th>Product</th><th>Qty</th><th>Cost (Rs.)</th><th>Time</th></tr></thead>
             <tbody id="purchase-tbody"></tbody>
           </table>
         </div>
@@ -1021,37 +456,19 @@ Fill in the form to preview the bill here…</div>
 <!-- EDIT MODAL -->
 <div class="modal-overlay" id="edit-modal">
   <div class="modal">
-    <div class="modal-title">
-      ✏️ Edit Item
-      <span class="mt-hi">सामान की जानकारी बदलें</span>
-    </div>
+    <div class="modal-title">Edit Item <span class="mt-hi">&#2360;&#2366;&#2350;&#2366;&#2344; &#2325;&#2368; &#2332;&#2366;&#2344;&#2325;&#2366;&#2352;&#2368; &#2348;&#2342;&#2354;&#2375;&#2306;</span></div>
     <input type="hidden" id="edit-id">
     <div class="form-row">
-      <div class="field">
-        <label>Product Name <span class="lbl-hi">नाम</span></label>
-        <input id="e-pname">
-      </div>
-      <div class="field">
-        <label>Company <span class="lbl-hi">कंपनी</span></label>
-        <input id="e-company">
-      </div>
+      <div class="field"><label>Product Name</label><input id="e-pname"></div>
+      <div class="field"><label>Company</label><input id="e-company"></div>
     </div>
     <div class="form-row">
-      <div class="field">
-        <label>Expiry <span class="lbl-hi">समाप्ति</span></label>
-        <input id="e-expiry" type="month">
-      </div>
-      <div class="field">
-        <label>Qty <span class="lbl-hi">मात्रा</span></label>
-        <input id="e-qty" type="number">
-      </div>
-      <div class="field">
-        <label>Price (₹) <span class="lbl-hi">कीमत</span></label>
-        <input id="e-price" type="number">
-      </div>
+      <div class="field"><label>Expiry</label><input id="e-expiry" type="month"></div>
+      <div class="field"><label>Qty</label><input id="e-qty" type="number"></div>
+      <div class="field"><label>Price (Rs.)</label><input id="e-price" type="number"></div>
     </div>
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="saveEdit()">💾 Save Changes</button>
+      <button class="btn btn-primary" onclick="saveEdit()">Save Changes</button>
       <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
     </div>
   </div>
@@ -1060,42 +477,40 @@ Fill in the form to preview the bill here…</div>
 <div id="toast-wrap"></div>
 
 <script>
-const API = 'http://localhost:5000/api';
-let stockAll = [];
-const sideNav = document.querySelectorAll('.nav-btn');
+var API = 'http://localhost:5000/api';
+var stockAll = [];
+var sideNav = document.querySelectorAll('.nav-btn');
 
-/* TOAST */
-function toast(msg, type = 'ok') {
-  const el = document.createElement('div');
+function toast(msg, type) {
+  type = type || 'ok';
+  var el = document.createElement('div');
   el.className = 'toast ' + type;
-  el.textContent = (type==='ok'?'✔  ':type==='err'?'✖  ':'ℹ  ') + msg;
+  el.textContent = (type === 'ok' ? '\u2714  ' : '\u2716  ') + msg;
   document.getElementById('toast-wrap').appendChild(el);
-  setTimeout(() => {
+  setTimeout(function() {
     el.style.transition = 'opacity 0.3s';
-    el.style.opacity = 0;
-    setTimeout(() => el.remove(), 320);
+    el.style.opacity = '0';
+    setTimeout(function() { el.remove(); }, 320);
   }, 2800);
 }
 
-/* DB STATUS */
 async function checkDB() {
   try {
-    const r = await fetch(API + '/stats', { signal: AbortSignal.timeout(3000) });
+    var r = await fetch(API + '/stats');
     if (r.ok) {
       document.getElementById('db-dot').classList.remove('off');
       document.getElementById('db-status').textContent = 'MySQL Connected';
       return true;
     }
-  } catch {}
+  } catch(e) {}
   document.getElementById('db-dot').classList.add('off');
   document.getElementById('db-status').textContent = 'Server Offline';
   return false;
 }
 
-/* NAV */
 function goPage(id, btn) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.nav-btn').forEach(function(b) { b.classList.remove('active'); });
   document.getElementById('page-' + id).classList.add('active');
   if (btn) btn.classList.add('active');
   if (id === 'dashboard') loadDashboard();
@@ -1104,90 +519,91 @@ function goPage(id, btn) {
   if (id === 'purchase')  loadPurchase();
   if (id === 'bill')      loadBillDropdown();
 }
+
 function stTab(id, btn) {
-  document.querySelectorAll('.tab-body').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('#page-stock .tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-body').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('#page-stock .tab').forEach(function(b) { b.classList.remove('active'); });
   document.getElementById('st-' + id).classList.add('active');
   btn.classList.add('active');
   if (id === 'list') loadStock();
 }
 
-/* STATUS BADGE */
 function statusBadge(qty, expiry) {
   if (!expiry) return '<span class="badge badge-low">? Unknown</span>';
-  const months = (new Date(expiry + '-01') - new Date()) / (1000 * 60 * 60 * 24 * 30);
-  if (months < 0)  return '<span class="badge badge-expired">⚠ Expired</span>';
-  if (months < 2)  return '<span class="badge badge-expired">⚠ Expiring Soon</span>';
-  if (qty < 10)    return '<span class="badge badge-low">↓ Low Stock</span>';
-  return '<span class="badge badge-ok">✔ In Stock</span>';
+  var months = (new Date(expiry + '-01') - new Date()) / (1000 * 60 * 60 * 24 * 30);
+  if (months < 0)  return '<span class="badge badge-expired">\u26a0 Expired</span>';
+  if (months < 2)  return '<span class="badge badge-expired">\u26a0 Expiring Soon</span>';
+  if (qty < 10)    return '<span class="badge badge-low">\u2193 Low Stock</span>';
+  return '<span class="badge badge-ok">\u2714 In Stock</span>';
 }
 
-/* LOAD STOCK */
 async function loadStock() {
-  try { const r = await fetch(API + '/stock'); stockAll = await r.json(); }
-  catch { stockAll = []; }
+  try {
+    var r = await fetch(API + '/stock');
+    stockAll = await r.json();
+  } catch(e) { stockAll = []; }
   renderStockTable(stockAll);
   loadBillDropdown();
 }
+
 function renderStockTable(data) {
-  const tb = document.getElementById('stock-tbody');
+  var tb = document.getElementById('stock-tbody');
   if (!data.length) {
-    tb.innerHTML = `<tr><td colspan="8"><div class="empty"><div class="ei">📭</div><p>No items added yet. Add some stock above.</p></div></td></tr>`;
+    tb.innerHTML = '<tr><td colspan="8"><div class="empty"><div class="ei">\ud83d\udced</div><p>No items added yet. Add some stock above.</p></div></td></tr>';
     return;
   }
-  tb.innerHTML = data.map((r, i) => `
-    <tr>
-      <td style="font-family:var(--ff-mono);font-size:0.74rem;color:var(--muted)">${i + 1}</td>
-      <td><strong>${r.p_name}</strong></td>
-      <td>${r.company}</td>
-      <td style="font-family:var(--ff-mono);font-size:0.78rem">${r.expiry || '—'}</td>
-      <td>${r.qty}</td>
-      <td style="font-weight:700;color:var(--ink2)">₹${r.price}</td>
-      <td>${statusBadge(r.qty, r.expiry)}</td>
-      <td>
-        <div style="display:flex;gap:0.4rem">
-          <button class="btn btn-outline btn-sm" onclick="openEdit(${r.id})">✏️ Edit</button>
-          <button class="btn btn-red btn-sm" onclick="delItem(${r.id},'${r.p_name}')">🗑️</button>
-        </div>
-      </td>
-    </tr>`).join('');
-}
-function filterStock() {
-  const q = document.getElementById('stock-search').value.toLowerCase();
-  renderStockTable(stockAll.filter(r =>
-    r.p_name.toLowerCase().includes(q) || r.company.toLowerCase().includes(q)
-  ));
+  var html = '';
+  for (var i = 0; i < data.length; i++) {
+    var r = data[i];
+    html += '<tr>';
+    html += '<td style="font-family:var(--ff-mono);font-size:0.74rem;color:var(--muted)">' + (i+1) + '</td>';
+    html += '<td><strong>' + r.p_name + '</strong></td>';
+    html += '<td>' + r.company + '</td>';
+    html += '<td style="font-family:var(--ff-mono);font-size:0.78rem">' + (r.expiry || '--') + '</td>';
+    html += '<td>' + r.qty + '</td>';
+    html += '<td style="font-weight:700;color:var(--ink2)">Rs. ' + r.price + '</td>';
+    html += '<td>' + statusBadge(r.qty, r.expiry) + '</td>';
+    html += '<td><div style="display:flex;gap:0.4rem">';
+    html += '<button class="btn btn-outline btn-sm" onclick="openEdit(' + r.id + ')">Edit</button>';
+    html += '<button class="btn btn-red btn-sm" onclick="delItem(' + r.id + ',\'' + r.p_name + '\')">Delete</button>';
+    html += '</div></td></tr>';
+  }
+  tb.innerHTML = html;
 }
 
-/* ADD ITEM */
+function filterStock() {
+  var q = document.getElementById('stock-search').value.toLowerCase();
+  renderStockTable(stockAll.filter(function(r) {
+    return r.p_name.toLowerCase().indexOf(q) !== -1 || r.company.toLowerCase().indexOf(q) !== -1;
+  }));
+}
+
 async function addItem() {
-  const d = {
+  var d = {
     p_name:  document.getElementById('st-pname').value.trim(),
     company: document.getElementById('st-company').value.trim(),
     expiry:  document.getElementById('st-expiry').value,
     qty:     parseInt(document.getElementById('st-qty').value),
-    price:   parseInt(document.getElementById('st-price').value),
+    price:   parseInt(document.getElementById('st-price').value)
   };
   if (!d.p_name || !d.company || !d.expiry || isNaN(d.qty) || isNaN(d.price)) {
     toast('Please fill all fields!', 'err'); return;
   }
   try {
-    await fetch(API + '/stock', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(d)
-    });
-    toast(d.p_name + ' added to stock successfully!');
+    await fetch(API + '/stock', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(d) });
+    toast(d.p_name + ' added to stock!');
     clearStForm(); loadStock();
-  } catch { toast('Cannot connect to server!', 'err'); }
-}
-function clearStForm() {
-  ['st-pname','st-company','st-expiry','st-qty','st-price'].forEach(id => document.getElementById(id).value = '');
+  } catch(e) { toast('Cannot connect to server!', 'err'); }
 }
 
-/* EDIT */
+function clearStForm() {
+  ['st-pname','st-company','st-expiry','st-qty','st-price'].forEach(function(id) { document.getElementById(id).value = ''; });
+}
+
 function openEdit(id) {
-  const item = stockAll.find(r => r.id === id); if (!item) return;
+  var item = null;
+  for (var i = 0; i < stockAll.length; i++) { if (stockAll[i].id === id) { item = stockAll[i]; break; } }
+  if (!item) return;
   document.getElementById('edit-id').value    = id;
   document.getElementById('e-pname').value    = item.p_name;
   document.getElementById('e-company').value  = item.company;
@@ -1197,222 +613,229 @@ function openEdit(id) {
   document.getElementById('edit-modal').classList.add('open');
 }
 function closeModal() { document.getElementById('edit-modal').classList.remove('open'); }
+
 async function saveEdit() {
-  const id = document.getElementById('edit-id').value;
-  const d = {
+  var id = document.getElementById('edit-id').value;
+  var d = {
     p_name:  document.getElementById('e-pname').value.trim(),
     company: document.getElementById('e-company').value.trim(),
     expiry:  document.getElementById('e-expiry').value,
     qty:     parseInt(document.getElementById('e-qty').value),
-    price:   parseInt(document.getElementById('e-price').value),
+    price:   parseInt(document.getElementById('e-price').value)
   };
   try {
-    await fetch(API + '/stock/' + id, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(d)
-    });
-    toast(d.p_name + ' updated successfully!');
+    await fetch(API + '/stock/' + id, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(d) });
+    toast(d.p_name + ' updated!');
     closeModal(); loadStock();
-  } catch { toast('Update failed!', 'err'); }
+  } catch(e) { toast('Update failed!', 'err'); }
 }
 
-/* DELETE */
 async function delItem(id, name) {
-  if (!confirm(`Remove "${name}" from stock?`)) return;
+  if (!confirm('Remove "' + name + '" from stock?')) return;
   try {
-    await fetch(API + '/stock/' + id, { method: 'DELETE' });
-    toast(name + ' removed from stock.', 'err');
-    loadStock();
-  } catch { toast('Delete failed!', 'err'); }
+    await fetch(API + '/stock/' + id, { method:'DELETE' });
+    toast(name + ' removed.', 'err'); loadStock();
+  } catch(e) { toast('Delete failed!', 'err'); }
 }
 
-/* DASHBOARD */
 async function loadDashboard() {
   try {
-    const [stats, stock] = await Promise.all([
-      fetch(API + '/stats').then(r => r.json()),
-      fetch(API + '/stock').then(r => r.json()),
-    ]);
+    var statsRes = await fetch(API + '/stats');
+    var stockRes = await fetch(API + '/stock');
+    var stats = await statsRes.json();
+    var stock = await stockRes.json();
     document.getElementById('s-items').textContent = stats.items;
     document.getElementById('s-bills').textContent = stats.bills;
-    document.getElementById('s-rev').textContent   = '₹' + stats.revenue;
+    document.getElementById('s-rev').textContent   = 'Rs. ' + stats.revenue;
     document.getElementById('s-pur').textContent   = stats.purchases;
     stockAll = stock;
-    const tb = document.getElementById('dash-stock-tbody');
+    var tb = document.getElementById('dash-stock-tbody');
     if (!stock.length) {
-      tb.innerHTML = `<tr><td colspan="6"><div class="empty"><p>No stock entries yet.</p></div></td></tr>`;
+      tb.innerHTML = '<tr><td colspan="6"><div class="empty"><p>No stock entries yet.</p></div></td></tr>';
       return;
     }
-    tb.innerHTML = stock.slice(0, 6).map(r => `
-      <tr>
-        <td><strong>${r.p_name}</strong></td>
-        <td>${r.company}</td>
-        <td style="font-family:var(--ff-mono);font-size:0.78rem">${r.expiry || '—'}</td>
-        <td>${r.qty}</td>
-        <td style="font-weight:700">₹${r.price}</td>
-        <td>${statusBadge(r.qty, r.expiry)}</td>
-      </tr>`).join('');
-  } catch {
-    ['s-items','s-bills','s-rev','s-pur'].forEach(id => document.getElementById(id).textContent = 'N/A');
+    var html = '';
+    var limit = stock.length < 6 ? stock.length : 6;
+    for (var i = 0; i < limit; i++) {
+      var r = stock[i];
+      html += '<tr>';
+      html += '<td><strong>' + r.p_name + '</strong></td>';
+      html += '<td>' + r.company + '</td>';
+      html += '<td style="font-family:var(--ff-mono);font-size:0.78rem">' + (r.expiry || '--') + '</td>';
+      html += '<td>' + r.qty + '</td>';
+      html += '<td style="font-weight:700">Rs. ' + r.price + '</td>';
+      html += '<td>' + statusBadge(r.qty, r.expiry) + '</td>';
+      html += '</tr>';
+    }
+    tb.innerHTML = html;
+  } catch(e) {
+    ['s-items','s-bills','s-rev','s-pur'].forEach(function(id) { document.getElementById(id).textContent = 'N/A'; });
   }
 }
 
-/* BILL */
 function loadBillDropdown() {
-  const sel = document.getElementById('b-product');
-  sel.innerHTML = '<option value="">— Select Product —</option>'
-    + stockAll.map(r => `<option value="${r.id}" data-price="${r.price}">${r.p_name}</option>`).join('');
+  var sel = document.getElementById('b-product');
+  var html = '<option value="">-- Select Product --</option>';
+  for (var i = 0; i < stockAll.length; i++) {
+    html += '<option value="' + stockAll[i].id + '" data-price="' + stockAll[i].price + '">' + stockAll[i].p_name + '</option>';
+  }
+  sel.innerHTML = html;
 }
+
 function fillBillFromStock() {
-  const sel = document.getElementById('b-product');
-  const opt = sel.options[sel.selectedIndex];
+  var sel = document.getElementById('b-product');
+  var opt = sel.options[sel.selectedIndex];
   if (opt && opt.dataset.price) document.getElementById('b-rate').value = opt.dataset.price;
   previewBill();
 }
+
 function previewBill() {
-  const store   = document.getElementById('b-store').value  || 'Kirana Ki Dukan';
-  const addr    = document.getElementById('b-addr').value   || '—';
-  const phone   = document.getElementById('b-phone').value  || '—';
-  const sel     = document.getElementById('b-product');
-  const product = sel.selectedIndex > 0 ? sel.options[sel.selectedIndex].text : '—';
-  const qty     = parseInt(document.getElementById('b-qty').value)  || 0;
-  const rate    = parseInt(document.getElementById('b-rate').value) || 0;
-  const gst     = parseInt(document.getElementById('b-gst').value)  || 0;
-  const sub     = rate * qty;
-  const gstAmt  = (sub * gst / 100).toFixed(2);
-  const total   = (sub * (1 + gst / 100)).toFixed(2);
-  const now     = new Date().toLocaleString('en-IN');
+  var store   = document.getElementById('b-store').value  || 'Kirana Ki Dukan';
+  var addr    = document.getElementById('b-addr').value   || '--';
+  var phone   = document.getElementById('b-phone').value  || '--';
+  var sel     = document.getElementById('b-product');
+  var product = sel.selectedIndex > 0 ? sel.options[sel.selectedIndex].text : '--';
+  var qty     = parseInt(document.getElementById('b-qty').value)  || 0;
+  var rate    = parseInt(document.getElementById('b-rate').value) || 0;
+  var gst     = parseInt(document.getElementById('b-gst').value)  || 0;
+  var sub     = rate * qty;
+  var gstAmt  = (sub * gst / 100).toFixed(2);
+  var total   = (sub * (1 + gst / 100)).toFixed(2);
+  var now     = new Date().toLocaleString('en-IN');
 
-  document.getElementById('bill-receipt').innerHTML =
-`<span class="r-hdr">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
-  🛒  ${store}
-  📍  ${addr}
-  📞  ${phone}
-<span class="r-hdr">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
-  Date     :  ${now}
+  var lines = [];
+  lines.push('=====================================');
+  lines.push('  Store : ' + store);
+  lines.push('  Addr  : ' + addr);
+  lines.push('  Phone : ' + phone);
+  lines.push('=====================================');
+  lines.push('  Date     : ' + now);
+  lines.push('');
+  lines.push('  Item     : ' + product);
+  lines.push('  Qty      : ' + qty);
+  lines.push('  Rate     : Rs. ' + rate);
+  lines.push('  Subtotal : Rs. ' + sub);
+  lines.push('  GST      : ' + gst + '%  ->  Rs. ' + gstAmt);
+  lines.push('  -----------------------------------');
+  lines.push('  TOTAL    : Rs. ' + total);
+  lines.push('  -----------------------------------');
+  lines.push('');
+  lines.push('  Thank you! Please visit again.');
+  lines.push('=====================================');
 
-  Item     :  ${product}
-  Qty      :  ${qty}
-  Rate     :  ₹${rate}
-  Subtotal :  ₹${sub}
-  GST      :  ${gst}%  →  ₹${gstAmt}
-  ───────────────────────────────────
-<span class="r-tot">  TOTAL    :  ₹${total}</span>
-  ───────────────────────────────────
-
-  Thank you! Please visit again. 🙏
-  धन्यवाद! फिर आइए।
-<span class="r-hdr">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span><div class="r-wm">₹</div>`;
+  document.getElementById('bill-receipt').textContent = lines.join('\n');
 }
+
 async function generateBill() {
-  const sel     = document.getElementById('b-product');
-  const product = sel.selectedIndex > 0 ? sel.options[sel.selectedIndex].text : '';
-  const qty     = parseInt(document.getElementById('b-qty').value);
-  const price   = parseInt(document.getElementById('b-rate').value);
-  const gst     = parseInt(document.getElementById('b-gst').value) || 0;
+  var sel     = document.getElementById('b-product');
+  var product = sel.selectedIndex > 0 ? sel.options[sel.selectedIndex].text : '';
+  var qty     = parseInt(document.getElementById('b-qty').value);
+  var price   = parseInt(document.getElementById('b-rate').value);
+  var gst     = parseInt(document.getElementById('b-gst').value) || 0;
   if (!product || isNaN(qty) || isNaN(price) || qty <= 0 || price <= 0) {
     toast('Please fill all product details!', 'err'); return;
   }
   try {
-    const r = await fetch(API + '/sales', {
+    var r = await fetch(API + '/sales', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ product, qty, price, gst })
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({product: product, qty: qty, price: price, gst: gst})
     });
-    const j = await r.json();
-    toast('Bill generated! Total: ₹' + j.total);
+    var j = await r.json();
+    toast('Bill generated! Total: Rs. ' + j.total);
     previewBill();
-  } catch { toast('Bill generation failed!', 'err'); }
+  } catch(e) { toast('Bill generation failed!', 'err'); }
 }
+
 function clearBill() {
-  ['b-store','b-addr','b-phone','b-rate'].forEach(id => document.getElementById(id).value = '');
+  ['b-store','b-addr','b-phone','b-rate'].forEach(function(id) { document.getElementById(id).value = ''; });
   document.getElementById('b-product').value = '';
   document.getElementById('b-qty').value     = 1;
   document.getElementById('b-gst').value     = 18;
-  document.getElementById('bill-receipt').innerHTML = '<div class="r-wm">₹</div>\nFill in the form to preview the bill here…';
+  document.getElementById('bill-receipt').textContent = 'Fill in the form to preview the bill here...';
 }
+
 function printBill() {
-  const txt = document.getElementById('bill-receipt').innerText;
-  const w   = window.open('', '_blank');
-  w.document.write(`<!DOCTYPE html><html><head>
-    <style>body{font-family:monospace;font-size:13px;padding:2rem;line-height:1.9;color:#1c0f05;background:#fff}</style>
-    </head><body><pre>${txt}</pre></body></html>`);
+  var txt = document.getElementById('bill-receipt').textContent;
+  var w   = window.open('', '_blank');
+  w.document.write('<html><head><style>body{font-family:monospace;font-size:13px;padding:2rem;line-height:1.9;}</style></head><body><pre>' + txt + '</pre></body></html>');
   w.print();
 }
 
-/* SALES */
 async function loadSales() {
   try {
-    const data = await fetch(API + '/sales').then(r => r.json());
-    const tb   = document.getElementById('sales-tbody');
+    var r    = await fetch(API + '/sales');
+    var data = await r.json();
+    var tb   = document.getElementById('sales-tbody');
     if (!data.length) {
-      tb.innerHTML = `<tr><td colspan="7"><div class="empty"><div class="ei">📭</div><p>No sales recorded yet.</p></div></td></tr>`;
-      document.getElementById('sales-grand').textContent = '₹0';
+      tb.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="ei">\ud83d\udceb</div><p>No sales recorded yet.</p></div></td></tr>';
+      document.getElementById('sales-grand').textContent = 'Rs. 0';
       return;
     }
-    const grand = data.reduce((s, r) => s + r.total, 0);
-    document.getElementById('sales-grand').textContent = '₹' + grand.toFixed(2);
-    tb.innerHTML = data.map(r => `
-      <tr>
-        <td style="font-family:var(--ff-mono);font-size:0.73rem;color:var(--muted)">#${r.id}</td>
-        <td><strong>${r.product}</strong></td>
-        <td>${r.qty}</td>
-        <td>₹${r.price}</td>
-        <td>${r.gst}%</td>
-        <td style="font-weight:800;color:var(--saffron)">₹${parseFloat(r.total).toFixed(2)}</td>
-        <td style="font-family:var(--ff-mono);font-size:0.69rem;color:var(--muted)">${r.created ? String(r.created).substring(0,16) : '—'}</td>
-      </tr>`).join('');
-  } catch { toast('Failed to load sales!', 'err'); }
+    var grand = 0;
+    for (var i = 0; i < data.length; i++) grand += data[i].total;
+    document.getElementById('sales-grand').textContent = 'Rs. ' + grand.toFixed(2);
+    var html = '';
+    for (var i = 0; i < data.length; i++) {
+      var r2 = data[i];
+      html += '<tr>';
+      html += '<td style="font-family:var(--ff-mono);font-size:0.73rem;color:var(--muted)">#' + r2.id + '</td>';
+      html += '<td><strong>' + r2.product + '</strong></td>';
+      html += '<td>' + r2.qty + '</td>';
+      html += '<td>Rs. ' + r2.price + '</td>';
+      html += '<td>' + r2.gst + '%</td>';
+      html += '<td style="font-weight:800;color:var(--saffron)">Rs. ' + parseFloat(r2.total).toFixed(2) + '</td>';
+      html += '<td style="font-family:var(--ff-mono);font-size:0.69rem;color:var(--muted)">' + (r2.created ? String(r2.created).substring(0,16) : '--') + '</td>';
+      html += '</tr>';
+    }
+    tb.innerHTML = html;
+  } catch(e) { toast('Failed to load sales!', 'err'); }
 }
 
-/* PURCHASE */
 async function addPurchase() {
-  const d = {
+  var d = {
     product: document.getElementById('p-pname').value.trim(),
     qty:     parseInt(document.getElementById('p-qty').value),
-    cost:    parseInt(document.getElementById('p-cost').value),
+    cost:    parseInt(document.getElementById('p-cost').value)
   };
-  if (!d.product || isNaN(d.qty) || isNaN(d.cost)) {
-    toast('Please fill all fields!', 'err'); return;
-  }
+  if (!d.product || isNaN(d.qty) || isNaN(d.cost)) { toast('Please fill all fields!', 'err'); return; }
   try {
-    await fetch(API + '/purchase', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(d)
-    });
+    await fetch(API + '/purchase', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(d) });
     toast(d.product + ' purchase recorded!');
-    ['p-pname','p-qty','p-cost'].forEach(id => document.getElementById(id).value = '');
+    ['p-pname','p-qty','p-cost'].forEach(function(id) { document.getElementById(id).value = ''; });
     loadPurchase();
-  } catch { toast('Record failed!', 'err'); }
-}
-async function loadPurchase() {
-  try {
-    const data = await fetch(API + '/purchase').then(r => r.json());
-    const tb   = document.getElementById('purchase-tbody');
-    if (!data.length) {
-      tb.innerHTML = `<tr><td colspan="5"><div class="empty"><div class="ei">📭</div><p>No purchase records yet.</p></div></td></tr>`;
-      return;
-    }
-    tb.innerHTML = data.map((r, i) => `
-      <tr>
-        <td style="color:var(--muted)">${i + 1}</td>
-        <td><strong>${r.product}</strong></td>
-        <td>${r.qty}</td>
-        <td style="font-weight:700">₹${r.cost}</td>
-        <td style="font-family:var(--ff-mono);font-size:0.69rem;color:var(--muted)">${r.created ? String(r.created).substring(0,16) : '—'}</td>
-      </tr>`).join('');
-  } catch { toast('Failed to load purchases!', 'err'); }
+  } catch(e) { toast('Record failed!', 'err'); }
 }
 
-/* BOOT */
-(async () => {
-  await checkDB();
-  loadDashboard();
-  loadStock();
-  setInterval(checkDB, 10000);
-})();
+async function loadPurchase() {
+  try {
+    var r    = await fetch(API + '/purchase');
+    var data = await r.json();
+    var tb   = document.getElementById('purchase-tbody');
+    if (!data.length) {
+      tb.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="ei">\ud83d\udceb</div><p>No purchase records yet.</p></div></td></tr>';
+      return;
+    }
+    var html = '';
+    for (var i = 0; i < data.length; i++) {
+      var r2 = data[i];
+      html += '<tr>';
+      html += '<td style="color:var(--muted)">' + (i+1) + '</td>';
+      html += '<td><strong>' + r2.product + '</strong></td>';
+      html += '<td>' + r2.qty + '</td>';
+      html += '<td style="font-weight:700">Rs. ' + r2.cost + '</td>';
+      html += '<td style="font-family:var(--ff-mono);font-size:0.69rem;color:var(--muted)">' + (r2.created ? String(r2.created).substring(0,16) : '--') + '</td>';
+      html += '</tr>';
+    }
+    tb.innerHTML = html;
+  } catch(e) { toast('Failed to load purchases!', 'err'); }
+}
+
+// BOOT
+checkDB();
+loadDashboard();
+loadStock();
+setInterval(checkDB, 8000);
 </script>
 </body>
 </html>
