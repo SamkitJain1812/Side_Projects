@@ -10,7 +10,7 @@ Welcome to my repository! This contains some of my side projects focused on diff
 
 📖 A simple general store management system to handle items, sales, billing, and user management.
 
-Tech Stack: Python
+Tech Stack: Python, HTML
 
 Features:
 
