@@ -38,11 +38,3 @@ cd Side_Projects
 ```
 
 Follow the setup guide in each project's respective README.md file.
-
-📩 Contact
-
-For any queries or collaboration opportunities, reach out to me at:
-
-📧 Email: samkitjain1812@gmail.com
-
-💼 LinkedIn: Samkitjain1812
