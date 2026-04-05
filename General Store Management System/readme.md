@@ -7,7 +7,6 @@
 ![Flask](https://img.shields.io/badge/Flask-3.x-1C0F05?style=flat-square&logo=flask&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0+-00758F?style=flat-square&logo=mysql&logoColor=white)
 ![HTML](https://img.shields.io/badge/Frontend-HTML%2FCSS%2FJS-F0B429?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-4E6B3A?style=flat-square)
 
 ---
 
@@ -41,7 +40,6 @@ kirana-ki-dukan/
 | Frontend   | HTML5, CSS3 (Flexbox), Vanilla JS |
 | Backend    | Python 3, Flask                   |
 | Database   | MySQL 8                           |
-| Fonts      | Abril Fatface, Mukta, JetBrains Mono (Google Fonts) |
 | API Style  | REST (JSON)                       |
 
 ---
